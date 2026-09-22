@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 POINTS = {
     # --- Tour de France ---
     "tdf_gc_1st": 100, "tdf_gc_2nd": 80, "tdf_gc_3rd": 68, "tdf_gc_4th": 58, "tdf_gc_5th": 48,
@@ -46,17 +49,10 @@ POINTS = {
     "wt_group2_oneday_6th": 10, "wt_group2_oneday_7th": 7, "wt_group2_oneday_8th": 5, "wt_group2_oneday_9th": 3, "wt_group2_oneday_10th": 2
 }
 
-palmares_db = {
-    "Tadej Pogačar": {
-        "tdf_gc_1st": 3,
-        "tdf_stage_1st": 17,
-        "monument_1st": 6
-    },
-    "Chris Froome": {
-        "tdf_gc_1st": 4,
-        "tdf_stage_1st": 7
-    }
-}
+def charger_palmares():
+    chemin_json = Path(__file__).parent.parent / "data" / "palmares.json"
+    with open(chemin_json, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 def calculer_score(palmares_coureur):
     total = 0
@@ -66,6 +62,8 @@ def calculer_score(palmares_coureur):
     return total
 
 if __name__ == "__main__":
+    palmares_db = charger_palmares()
+    
     classement_trie = sorted(
         palmares_db.items(), 
         key=lambda x: calculer_score(x[1]), 
