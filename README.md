@@ -1,4 +1,5 @@
 # Cycling 21st-Century Ranking
+Original Version is in French, an English one will be published at the end.
 
 ## 📌 Project Overview
 This personal project aims to objectively determine the best professional cyclist of the 21st century (2000–present) using a prestige-weighted scoring system in Python. Instead of merely counting raw victories, it applies a tailored points scale to Grands Tours, Monuments, and major races to fairly evaluate riders across different specialties (climbers, sprinters, time-trialists, and classics specialists).
